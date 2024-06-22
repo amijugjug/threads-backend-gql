@@ -1,0 +1,36 @@
+{
+  "name": "threads-backend",
+  "version": "1.0.0",
+  "description": "Backend for threads app using GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node build/index.js",
+    "dev": "tsc-watch --onSuccess \"npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amijugjug/threads-backend-gql.git"
+  },
+  "keywords": [
+    "GraphQL",
+    "Express",
+    "Node"
+  ],
+  "author": "Prakhar Srivastava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amijugjug/threads-backend-gql/issues"
+  },
+  "homepage": "https://github.com/amijugjug/threads-backend-gql#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "prettier": "^3.3.2",
+    "tsc-watch": "^6.2.0",
+    "typescript": "^5.5.2"
+  }
+}
