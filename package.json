@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/amijugjug/threads-backend-gql#readme",
   "dependencies": {
+    "@apollo/server": "^4.10.4",
     "express": "^4.19.2",
+    "graphql": "^16.9.0",
     "nodemon": "^3.1.4"
   },
   "devDependencies": {
