@@ -45,6 +45,8 @@ This project is a demonstration of GraphQL APIs, focusing on creating the backen
    ```bash
    yarn prisma generate
    ```
+5. **Copy .env.sample file to .env file**
+
 
 ### Development
 
@@ -75,15 +77,33 @@ Prisma is used for database schema management. To apply schema changes and migra
 
 ```
 .
+├── prisma   # Prisma schema and client
 ├── src
-│   ├── index.ts         # Entry point of the server
-│   ├── schema.graphql   # GraphQL schema definition
-│   ├── resolvers        # GraphQL resolvers
-│   ├── prisma           # Prisma schema and client
-│   └── ...              # Other server-related files
-├── docker-compose.yml   # Docker Compose configuration
-├── package.json         # Project dependencies and scripts
-└── README.md            # Project documentation
+|   ├── db
+│   │   ├── index.ts
+│   ├── graphql   # GraphQL schema definition
+│   │   ├── index.ts
+│   │   ├── user    # Entities
+│   │   │   ├── index.ts
+│   │   │   ├── mutations.ts
+│   │   │   ├── queries.ts
+│   │   │   ├── resolvers.ts
+│   │   │   ├── typedefs.ts
+│   │   │   ├── user.d.ts
+│   ├── middlewares
+│   │   ├── auth.middleware.ts
+│   ├── services
+│   │   ├── user.ts
+│   ├── utils
+│   │   ├── utilities.ts
+│   ├── index.ts     # Entry point of the server
+├── env.sample
+├── .gitignore
+├── docker-compose.yml  # Docker Compose configuration
+├── package.json    # Project dependencies and scripts
+├── Readme.md   # Project documentation
+├── tsconfig.json
+├── yarn.lock
 ```
 
 ## Contributing
