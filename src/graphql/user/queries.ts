@@ -4,4 +4,5 @@ export const queries = `#graphql
 
     #getUserToken
     getUserToken(email: String!, password: String!): String!
+    getCurrentLoggedInUser: User
 `;

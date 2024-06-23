@@ -4,6 +4,7 @@ import cors from "cors";
 import { expressMiddleware } from "@apollo/server/express4";
 import { initGraphQLServer } from "./graphql";
 import dotenv from "dotenv";
+import { authMiddleware } from "./middlewares/auth.middleware";
 
 dotenv.config({
   path: `./.env`,
@@ -21,8 +22,11 @@ const startServer = async () => {
   );
 
   const gqlServer = await initGraphQLServer();
-
-  app.use("/graphql", expressMiddleware(gqlServer));
+ 
+  app.use(
+    "/graphql",
+    expressMiddleware(gqlServer, { context: authMiddleware })
+  );
 
   app.get("/", (req, res) => res.json({ message: "Server is running" }));
 

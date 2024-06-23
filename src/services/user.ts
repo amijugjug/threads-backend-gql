@@ -1,6 +1,10 @@
 import { prismaClient } from "../db";
 import { CreateUserPayload, LoginUserPayload } from "../graphql/user/user";
-import { generateSalt, genereateHashedPassword } from "../utils/utilities";
+import {
+  generateSalt,
+  generateToken,
+  genereateHashedPassword,
+} from "../utils/utilities";
 import JWT from "jsonwebtoken";
 
 class UserService {
@@ -29,6 +33,10 @@ class UserService {
     });
   }
 
+  public static getUserById(id: string) {
+    return prismaClient.user.findUnique({ where: { id: id } });
+  }
+
   public static async getUserToken(payload: LoginUserPayload) {
     const { email, password } = payload;
 
@@ -45,16 +53,12 @@ class UserService {
       throw new Error("Incorrect password");
     }
 
-    const token = JWT.sign(
-      {
-        id: user.id,
-        email: user.email,
-      },
-      String(process.env.ACCESS_TOKEN_SECRET),
-      {
-        expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
-      }
-    );
+    const tokenArgs = {
+      id: user.id,
+      email: user.email,
+    };
+
+    const token = generateToken(tokenArgs);
     return token;
   }
 }

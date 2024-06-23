@@ -9,6 +9,20 @@ const queries = {
     const res = await UserService.getUserToken({ email, password });
     return res;
   },
+
+  getCurrentLoggedInUser: async (
+    parent: any,
+    payload: LoginUserPayload,
+    context: any
+  ) => {
+    if (context && context.user) {
+      console.log("inside ");
+      const id = context.user.id;
+      const user = await UserService.getUserById(id);
+      return user;
+    }
+    throw new Error("I dont know who are you");
+  },
 };
 
 const mutations = {
