@@ -22,10 +22,12 @@ const startServer = async () => {
   );
 
   const gqlServer = await initGraphQLServer();
- 
+
   app.use(
     "/graphql",
-    expressMiddleware(gqlServer, { context: authMiddleware })
+    expressMiddleware(gqlServer, {
+      context: authMiddleware,
+    })
   );
 
   app.get("/", (req, res) => res.json({ message: "Server is running" }));

@@ -8,12 +8,13 @@ export const authMiddleware = async ({
   req: Request;
   res: Response;
 }) => {
-  const token = req.headers["Authorization"];
-
   try {
-    console.log("token : ", token);
+    const token = req.headers?.authorization;
+
+    if (!token) throw new Error("Please provide a valid token");
+
     const user = verifyToken(token as string);
-    console.log("user : ", user);
+
     return { user };
   } catch (error) {
     return {};
