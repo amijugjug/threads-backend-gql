@@ -90,8 +90,6 @@ Prisma is used for database schema management. To apply schema changes and migra
 
 Contributions are welcome! Please open an issue or submit a pull request for any bugs, features, or improvements.
 
-## License
-
 Feel free to reach out if you have any questions or need further assistance.
 
 Happy coding! 🚀
